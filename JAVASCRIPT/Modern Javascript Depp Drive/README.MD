@@ -5,12 +5,13 @@
     - [var 변수의 문제점](#var-변수의-문제점)
     - [let](#let)
     - [const](#const) 
-      -[재할당금지](#재할당금지)
-      -[상수](#상수)
-      -[const 키워드와 객체](#const-키워드와-객체)
-  - [var vs. let vs. const](var-vs.-let-vs.-const)
+      + [재할당금지](#재할당금지)
+      + [상수](#상수)
+      + [const 키워드와 객체](#const-키워드와-객체)
+  - [var or let or const](var-or-let-or-const)
 
 # 15장 
+
 ## let, const 키워드와 블록 레벨 스코프
 
 ### var 변수의 문제점
@@ -72,7 +73,7 @@ console.log(afterTaxPrice);
 * *때 객체가 변경되더라도 변수에 할당된 참조 값은 변경되지 않는다.
 
 
-## var vs. let vs. const
+## var or let or const
   * VAR는 사용하지 않는다.
   * 재할당이 필요한 경우 한정해 let를 사용한다. 이때 Scope는 최대한 좁게 만든다.
   * 변수 선언시 일단 const로 선언. 반드시 재할딩이 필요하다면 그때 let으로 바꿔도 늦지 않다.
