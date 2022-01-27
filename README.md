@@ -3,4 +3,3 @@
 
 ## USW
   * [markdown](./usw/markdown.md)
-  * [markdown2](./usw/markdown2.md)
