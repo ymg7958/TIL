@@ -5,4 +5,4 @@
   * [markdown](./usw/markdown.md)
 
 ## JAVASCRIPT
-  * [Modern Javascript Deep Drive](JAVASCRIPT/Modern%20Javascript%20Depp%20Drive/README.MD)
+  * [specifics](JAVASCRIPT/Modern%20Javascript%20Depp%20Drive/README.MD)
