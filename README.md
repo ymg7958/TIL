@@ -5,4 +5,7 @@
   * [markdown](./usw/markdown.md)
 
 ## JAVASCRIPT
-  * [제어문](./JAVASCRIPT/control%20statement/readme.md)
+  * [Ajax](JAVASCRIPT/Ajax/README.MD)
+  * [JSON](JAVASCRIPT/JSON/README.MD)
+  * [Array](JAVASCRIPT/Array/README.MD)
+  * [제어문](JAVASCRIPT/제어문/readme.md)
