@@ -5,4 +5,4 @@
   * [markdown](./usw/markdown.md)
 
 ## JAVASCRIPT
-  * [control statement](./JAVASCRIPT/control%20statement/readme.md)
+  * [제어문](./JAVASCRIPT/control%20statement/readme.md)
