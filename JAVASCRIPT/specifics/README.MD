@@ -14,6 +14,8 @@
   - [배열의 끝에 여러 요소 추가하기](#배열의-끝에-여러-요소-추가하기)
   - [배열 일부 가져오기](#배열-일부-가져오기)
   - [임의의 위치에 요소 추가하거나 제거하기](#임의의-위치에-요소-추가하거나-제거하기)
+  - [얕은 복사(shallow copy)](#얕은-복사(shallow-copy))
+  - [깊은 복사(deep copy)](#깊은-복사(deep-copy))
   - [summary](#summary)
 
 
@@ -297,7 +299,71 @@ arr.splice(1, 2); // [ 1, 4, 5, 6, 7 ]
 arr.splice(2, 1, "a", "b"); // [ 1, 4, 'a', 'b', 6, 7 ]
 console.log(arr); // [ 1, 4, 'a', 'b', 6, 7 ]
 ```
-------------------
+
+### 얕은 복사(shallow copy)
+
+```javascript
+const obj1 = { a: 1, b: 2};
+const obj2 = obj1;
+console.log( obj1 === obj2 ); // true
+```
+* 위의 예시처럼 객체를 직접 대입하는 경우 참조에 의한 할당이 이루어지므로 둘은 같은 데이터(주소)를 가지고 있다.
+  
+```javascript
+const obj1 = { a:1, b:2 };
+const obj2 = obj1;
+obj2.a = 100;
+console.log( obj1.a ); // 100
+```
+* 위 두 객체는 같은 데이터(주소)를 가지고 있고, 그래서 같은 주소를 참조하고 있다.
+* obj2의 property를 수정하고, obj1를 출력해도 obj2 값과 동일하다.
+
+### 깊은 복사(deep copy)
+
+* 얇은 복사 처럼 주소를 복사해서 공유하는 것이 아니라, 아예 새로운 객체안 속성(property)만 복사 해서 사용할 수 없을까?
+  👉 방법 1. …(spread) 연산자를 통한 복사 (과연 깊은 복사가 될까?)
+
+```javascript
+const obj1 = { a:1, b:2 };
+const obj2 = { ...obj };
+obj2.a = 100;
+console.log( obj1 === obj2 ) // false
+console.log( obj1.a ) // 1
+```
+* ...(spread) 연산자를 통해 { }안에 obj1의 속성을 복사하여 obj2에 할당하였다.
+* 이제 obj1과 obj2는 다른 주소를 갖게되었다. (그러나 딱, 1 depth 까지만)
+  👉 방법 2. Object.assign() 메소드를 통한 복사 (과연 깊은 복사가 될까?)
+
+```javascript
+const obj1 = { a:1, b:2 };
+const obj2 = Object.assign({}, obj1);
+obj2.a = 100;
+console.log( obj1 === obj2 ) // false
+console.log( obj1.a ) // 1
+```
+
+* Object.assign() 메소드를 통해 첫 번째 인자로 빈 { } 객체를, 두 번째 인자로 obj1 넣고 obj2 에 할당하였다.
+* 이제 obj1과 obj2는 다른 주소를 갖게되었다. (그러나 딱, 1 depth 까지만)
+
+ [Example]
+
+```javascript
+const addr = { city: 'seoul', gu: 'seocho'}
+const copy = {};
+for (let key in addr) {
+  copy[key] = addr[key];
+}
+console.log(addr); // { city: 'Seoul', gu: 'Seocho' } 
+console.log(copy); // { city: 'Seoul', gu: 'Seocho' }
+
+addr.gu = 'Gang-nam';
+
+console.log(addr) // { city: 'Seoul', gu: 'Gang-nam' }
+console.log(copy) // { city: 'Seoul', gu: 'Seocho' }
+```
+
+
+
 ## summary
 * 콜백 함수를 받는 find, findIndex, some, every, map, filter, reduce에서 콜백 함수가 제공 받는 매개변수
 ![table](../array/arrayRecap.png)

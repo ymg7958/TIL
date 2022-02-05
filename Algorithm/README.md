@@ -23,9 +23,6 @@ for (let i = 0; i < n.length; i++) {
       let tmp = n[j];
           n[j] = n[j + 1];
           n[j + 1] = tmp;
-    }
-  }
-}
 ```
 
 ### 역위 (inversion)
