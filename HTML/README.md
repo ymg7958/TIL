@@ -22,7 +22,7 @@
     + `<section>`: 특정 영역을 그룹화
     + `<article>` : 기사나 개별 콘텐츠 영역
     + `<footer>` : 꼬리말 영역
-![symantic](./structure1.png)
+![symantic](./images/structure1.png)
   * [Example 01]
     ```html
     <body>
@@ -63,18 +63,58 @@
       + 새로운 탭을 열어서 링크를 이동하려면 `target`속성 이용
 
 ## 2-4 Form 태그 - 사용자 정보 입력받기
+  * form 태그는 요소를 그룹으로 만들어 백엔드 영역의 위치로 한번에 전송
+  * 반드시 태그 속성 2가지를 지정해야 한다 : `action`, `method`
+    * `action` : 특정 주소값이나 파일 위치를
+    * `method` : 입력값의 전송 방식 지정
+  ```html
+    <body>
+      <form action="/" meethod="post">
+        <label>아이디</label>
+        <input type="text" />
+
+        <label>패스워드</label>
+        <input type="password" />
+
+        <input type="reset" />
+        <input type="submit" />
+      </form>  
+  ```
+------
+## 2-4 비디오, 오디오 태그 - 멀티미디어 콘텐츠 삽입하기
+  audio tag
+----
+  ```html
+    <audio src="file 위치" controls autodisplay loop preload></audio>
+   ```
+  * controls : 컨트롤 패널 생성
+  * autoplay : 웹 페이지 오픈시 자동 재생
+  * loop : 무한 반복
+  * preload : 오디오 파일 재성 전 파일을 미리 불러오기
+----
+  video tag
+  ```html
+  <video src="file 위치" controls autoplay loop preload></video>
+  ```
+  ---- 
+  * controls : 컨트롤 패널 생성
+  * autoplay : 웹 페이지 오픈시 자동 재생
+  * loop : 무한 반복
+  * preload : 동영상 파일 재성 전 파일을 미리 불러오기
+  * muted : 음소거
+  * poster : 플레이어 초기화면 
 
 
 ## Input tag  
 
   * label + input 함께 사용하지 않았을 때는 input tag를 정확히 클릭해야만 함
   
-  ![without_label](withoutLabel.png)
-  ![with_label](withLabel.png)
+  ![without_label](./images/withoutLabel.png)
+  ![with_label](./images/withLabel.png)
   * radio의 `name 값`이 일치해야 선택 그룹으로 묶인다.
     + 문제보기가 4개인 경우에서 1개만 선택할 경우 같은 `name="answer"`로 그룹화해야만 단일 선택이 가능.
 
-  ```javascript
+  ```html
   <li>
     <input type="radio" id="a" name="answer" class="answer" />
     <label id="a_text" for="a">Question</label>
@@ -83,12 +123,68 @@
   -------------
 ### required 속성
   * input 이 비어있으면 자동으로 필수값으로 값을 넣으라고 해주는 유효성 체크 항목.
-```javascript
+```html
   <input type="text" name="title" id="title" required/>
 ```
-![required](./required.jpeg)
+![required](./images/required.jpeg)
   * required 속성이 제대로 동작하는 input 요소의 type 속성값은 다음과 같다.
     + checkbox, date, email, file, number, password,
       pickers, radio, search, tel, text, url
   * required 속성은 불리언(boolean) 속성.
   * 불리언 속성은 해당 속성을 명시하지 않으면 속성값이 자동으로 false 값을 가지게 되며, 명시하면 자동으로 true 값을 가진다.
+------
+
+
+## 3. HTML - 선택자
+  
+  ### 자손 선택자
+
+  ```html
+    <ul>
+      <li>
+        자식 요소
+        <ol>
+          <li>자손 요소</li>
+        </ol>
+      </li> 
+    </ul>
+  ```
+  ![result](images/ul%20li.png)
+
+------
+### 자식 선택자
+----
+![result](images/ul%20>%20li.png)
+
+----
+
+### 다양한 요소 선택하기
+  * ul li:nth-of-type(1) { border: 1px solid blue} 
+    * ul li 의 첫번째만 선택하기
+  * ul li:nth-of-type(2n) { border: 1px solid blue} 
+    * ul li 의 짝수 요소 선택하기 ( 3n, 4n 가능 )
+    * ul li:nth-of-type(2n-1) 하면 홀수 요소만 선택  
+     
+  * ul li:last-child { border: 1px solid blue}
+    * 마지막 요소만 선택 
+    
+  * ul li:nth-of-type(even) { border: 1px solid blue} 
+  * ul li:nth-of-type(odd) { border: 1px solid blue} 
+    * 홀수, 짝수 요소 선택 가능
+
+
+
+## 3-3 폰트 스타일링
+
+  ### 폰트 굵기 바꾸기
+  ```html
+      font-weight: normal; or bold
+  ```
+----
+  ### 폰트 크기 바꾸기
+  ```html
+      font-size: px, rem, em
+  ```
+  * px : 픽셀 단위로 크기 설정
+  * rem : 최상위 부모인 <html> 태그 기준으로 폰트 크기 설정
+  * em : 부모 요소를 기준으로 폰트 크기 설정  ~~잘 사용하지 않음~~ ❌
