@@ -1,8 +1,9 @@
-const isIterable = (v) =>
-  v !== null && typeof v[Symbol.iterator] === "function";
+let obj = {
+  a: 1,
+  b: 2,
+};
 
-console.log(isIterable([]));
-console.log(isIterable(""));
-console.log(isIterable(new Map()));
-console.log(isIterable(new Set()));
-console.log(isIterable({}));
+let copy = obj;
+
+obj.a = 5;
+console.log(copy.a);

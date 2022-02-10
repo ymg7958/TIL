@@ -503,4 +503,92 @@ console.log(increaser()); // 1
     #### JSON.parse
      + 위 메서드는 JSON 포맷의 문자열을 객체로 변환한다.
         
-        
+
+
+
+-----------------------------
+
+## 오브젝트 복사하기
+
+```javascript
+let obj = {
+  a: 1,
+  b: 2,
+};
+
+let copy = obj;
+
+obj.a = 5;
+console.log(copy.a); // a = 5;
+```
+
+* obj 변수는 새로운 Object Container
+* copy 변수는 같은 Object 가르키는 reference
+ 👀 `{ a: 1, b: 2 }`Object 는 "나에게 접근하는 방법은 2가지가 있지" 라고 말하는 중이다.
+ `obj` 변수 또는 `copy` 변수 둘 중 하나를 통해서 object 에 접근할 수 있고 접근 후에는 방법과는 상관없이 value 값 변화가 일어난다.
+
+----
+
+ ### 얕은 오브젝트 복사하기 ( Shallow )
+
+소스 최상위 프로퍼티들이 어떠한 참조없이 복사될 때, Object 는 얕게 복사된다고 한다.
+하지만 중첩된 Objects 들은 원본 (original, source) 와 복사본 (copy, target) 사이에서 공유된다.
+
+----
+ ### Object.assign() Method
+ ----
+원본 Object 로부터 복사본 Object로 모든 Enumerable 프로퍼티의 값을 복사하기 위해 사용
+물론, 반환 값은 복사본 Object.
+```javascript
+let obj = { a: 1, b: 2 };
+let objCopy = Object.assign({}, obj);
+console.log(objCopy)  // { a: 1, b: 2 }
+```
+---
+👀 성공적으로 `obj`의 복사본을 만들었다! 이제 불변성 ( Enumerable ) 존재하는지 확인
+```javascript
+let obj = { a: 1, b: 2, };
+let objCopy = Object.assign({}, obj);
+
+console.log(objCopy); //  { a: 1, b: 2 }
+objCopy.b = 89;
+console.log(objCopy); //  { a: 1, b: 89 }
+console.log(obj);     //  { a: 1, b: 2 }
+```
+
+`b`의 값을 `89`로 바꾸고 변경된 `objCopy`에만 적용이 되었다.
+이 의미는 원본 Object 에 참조 없이 오브젝트를 복사했다는 것!
+
+--------
+### Object.assign() Method 문제점!❓❓
+
+```javascript
+let obj = { a: 1, 
+            b: { 
+                c: 2,
+               }, 
+          }
+let newObj = Object.assign({}, obj);
+console.log(newObj); // { a: 1, b: { c: 2} }
+
+obj.a = 10;
+console.log(obj); // { a: 10, b: { c: 2} }
+console.log(newObj); // { a: 1, b: { c: 2} }
+
+newObj.a = 20;
+console.log(obj); // { a: 10, b: { c: 2} }
+console.log(newObj); // { a: 20, b: { c: 2} }
+
+newObj.b.c = 30;
+console.log(obj); // { a: 10, b: { c: 30} }
+console.log(newObj); // { a: 20, b: { c: 30} }
+
+// Note: newObj.b.c = 30; Read why..
+```
+
+`Object.assign()` 문제는 바로 얕은 복사만 가능하다는 것.
+위 소스에서 `newobj.b` 와 `obj.b`는 둘다 같은 reference 를 공유한다..
+왜냐하면 하위 객체는 복사가 이루어지지 않았다.
+
+> 💡 프로토타입 체인과 프로퍼티, non-enumerable 프로퍼티들은 복사될 수 없다.
+
