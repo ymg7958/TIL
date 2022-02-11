@@ -527,7 +527,7 @@ console.log(copy) // { city: 'Seoul', gu: 'Seocho' }
 
 ## summary
 * 콜백 함수를 받는 find, findIndex, some, every, map, filter, reduce에서 콜백 함수가 제공 받는 매개변수
-<img src="../array/arrayRecap.png" width="250" height="250">
+<img src="../array/arrayRecap.png" width="300" height="250">
 
 -------------------------
 
@@ -536,7 +536,7 @@ console.log(copy) // { city: 'Seoul', gu: 'Seocho' }
 *  하지만, 1개 이상의 데이터 처리를 하는 것은 ***이벤트 루프*** 때문이다.
 *  이벤트 루프 = 브라우저 내장 기능
 
-    ![EventLoop](../images/EventLoop.png)
+    <img src="../images/EventLoop.png" width="300" height=300>
 > 이벤트 루프와 브라우저 환경
 
  * task queue : setTImeout, setInterval 과 같이 비동기 함수의 콜백 함수 또는 Event handler 가 일시적으로 보관되는 영역
@@ -548,8 +548,7 @@ console.log(copy) // { city: 'Seoul', gu: 'Seocho' }
 
 ### AJAX
  * 브라우저가 서버에게 비동기 방식으로 데이터를 요청하고, 서버가 응답한 데이터를 수신하여 웹페이지를 동적으로 갱신하는 프로그램 방식          
-  ****
-![web_cycle](../images/Web_life_cycle.png)
+<img src="../images/Web_life_cycle.png" width="300" height="170">
 > 전통적인 웹 페이지의 생명 주기
 
    * 단 점
@@ -558,7 +557,8 @@ console.log(copy) // { city: 'Seoul', gu: 'Seocho' }
      3. client와 server가 동기식 방식으로 서버로부터 응답이 있을 때까지 다음 처리는 blocking.
 
 ------
-   ![photo](../images/ajax.png)
+
+<img src="../images/ajax.png" width="300" heigth="100">
 
    * 전통적인 방식과 비교했을 때 장 점    
      1. 필요한 부분만 서버로부터 전송받는다.
