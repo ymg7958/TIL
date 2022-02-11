@@ -25,12 +25,118 @@
 
 
 
+### JS 클로저 및 함수흐름 문제
+---
+
+### [Example 00]
+
+----
+```javascript
+const increase = function (num) {
+  return ++num;
+};
+
+const predicates = { increase };
+
+function makeCounter(predicates) {
+  let num = 0;
+
+  return function () {
+    num = predicates(num);
+    return num;
+  };
+}
+const increaser = makeCounter(predicates.increase);
+console.log(increaser()); // 1
+```
+
+> 이해가 안되는 부분은 이 부분이다.
+ *parent:predicates, parent:num*
+
+-----
+### [Example 01]
+
+```javascript
+const increase = function () {
+  let num = 0;
+
+  return function () {
+    return (num += 1);
+  };
+};
+
+console.log(increase());
+console.log(increase());
+console.log(increase());
+```
+------
+### [Example 02]
+
+```javascript
+const counter = (function () {
+  let num = 0;
+
+  return {
+    increase() {
+      return ++num;
+    },
+    decrease() {
+      return num > 0 ? --num : 0;
+    },
+  };
+})();
+
+console.log(counter.increase(1));
+console.log(counter.increase(1));
+console.log(counter.decrease(1));
+console.log(counter.decrease(1));
+```
+-----
+![example](/JAVASCRIPT/images/1급객체%20예문.png)
+### [Example 03]
+
+```javascript
+function makeCounter(predicate) {
+  let counter = 0;
+
+  return function () {
+    counter = predicate(counter);
+    return counter;
+  };
+}
+function increase(n) {
+  return ++n;
+}
+
+function decrease(n) {
+  return --n;
+}
+
+const increaser = makeCounter(increase);
+console.log(increaser());
+console.log(increaser());
+
+const decreaser = makeCounter(decrease);
+console.log(decreaser());
+console.log(decreaser());
+```
 
 
 
-
-
-
+----
+----
+----
+----
+---
+---
+---
+---
+----
+----
+----
+---
+---
+---
 
 # 15장 : let, const 키워드와 블록 레벨 스코프
 
@@ -421,34 +527,7 @@ console.log(copy) // { city: 'Seoul', gu: 'Seocho' }
 
 ## summary
 * 콜백 함수를 받는 find, findIndex, some, every, map, filter, reduce에서 콜백 함수가 제공 받는 매개변수
-![table](../array/arrayRecap.png)
-
-
-### JS 1급객체 예문
-----
-```javascript
-const increase = function (num) {
-  return ++num;
-};
-
-const predicates = { increase };
-
-function makeCounter(predicates) {
-  let num = 0;
-
-  return function () {
-    num = predicates(num);
-    return num;
-  };
-}
-const increaser = makeCounter(predicates.increase);
-console.log(increaser()); // 1
-
-```
-> 이해가 안되는 부분은 이 부분이다.
- *parent:predicates, parent:num*    
-        
-![example](/JAVASCRIPT/images/1급객체%20예문.png)
+<img src="../array/arrayRecap.png" width="250" height="250">
 
 -------------------------
 
