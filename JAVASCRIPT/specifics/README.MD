@@ -457,7 +457,7 @@ console.log(increaser()); // 1
 *  하지만, 1개 이상의 데이터 처리를 하는 것은 ***이벤트 루프*** 때문이다.
 *  이벤트 루프 = 브라우저 내장 기능
 
-    ![EventLoop](images/../JAVASCRIPT/images/EventLoop.png)
+    ![EventLoop](../images/EventLoop.png)
 > 이벤트 루프와 브라우저 환경
 
  * task queue : setTImeout, setInterval 과 같이 비동기 함수의 콜백 함수 또는 Event handler 가 일시적으로 보관되는 영역
@@ -470,7 +470,7 @@ console.log(increaser()); // 1
 ### AJAX
  * 브라우저가 서버에게 비동기 방식으로 데이터를 요청하고, 서버가 응답한 데이터를 수신하여 웹페이지를 동적으로 갱신하는 프로그램 방식          
   ****
-![web_cycle](./JAVASCRIPT/images/Web_life_cycle.png)
+![web_cycle](../images/Web_life_cycle.png)
 > 전통적인 웹 페이지의 생명 주기
 
    * 단 점
@@ -478,13 +478,13 @@ console.log(increaser()); // 1
      2. 처음부터 다시 rendering. 순간 깜빡이는 현상 발생
      3. client와 server가 동기식 방식으로 서버로부터 응답이 있을 때까지 다음 처리는 blocking.
 
-   
-        ![ajax](./JAVASCRIPT/images/ajax.png)
-         > Ajax
-    * 전통적인 방식과 비교했을 때 장 점    
-        1. 필요한 부분만 서버로부터 전송받는다.
-        2. 변경할 필요가 없는 부분은 렌더링 하지 않는다.
-        3. 비동기방식으로 작동하기 때문에 블로킹 발생이 없음
+------
+   ![photo](../images/ajax.png)
+
+   * 전통적인 방식과 비교했을 때 장 점    
+     1. 필요한 부분만 서버로부터 전송받는다.
+     2. 변경할 필요가 없는 부분은 렌더링 하지 않는다.
+     3. 비동기방식으로 작동하기 때문에 블로킹 발생이 없음
 
 ### JSON
 * 클라이언트와 서버 간의 HTTP 통신을 위한 텍스트 데이터 포맷
