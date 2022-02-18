@@ -145,10 +145,14 @@
          4. 공통기능을 정의하는 부모 클래스
          5. 부모를 상속받는 자식 클래스(들) 정의
          6. 자식 클래스에 대한 객체 생성
-
-
   * ## [Module]
   * ## [Built-in Javascript]
+    * Math
+    * Date
+    * Regex
+    * encode
+    * parse
+    * isNan
   * ## [Asynchronous]
   * ## [Exception handling syntax]
 
