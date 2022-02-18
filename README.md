@@ -7,7 +7,7 @@
 ## [HTML](./HTML/README.md)
 
 ## JAVASCRIPT
-  * [Hello Javascript]
+  * [Hello Javascript](./JAVASCRIPT/.README.md)
   * [Variable and Data Type]
   * [Operator]
   * [Programming Control Flow]
