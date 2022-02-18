@@ -1,11 +1,11 @@
 # JAVASCRIPT
 
-  * ### [Hello Javascript]
+  * ## [Hello Javascript]
     * 웹 사이트 관련 직군 / 언어 분류
     * 실행환경 구성
     * Hello Javascript
     * 프로그램 소스코드가 실행되는 과정  
-  * ### [Variable and Data Type]
+  * ## [Variable and Data Type]
     * 전역변수
       1. 변수의 선언과 할당
       2. 선언과 할당의 통합
@@ -20,7 +20,7 @@
     * 변수의 자료형 
       1. 변수에 저장할 수 있는 값의 종류 
       2. 변수의 자료형 확인하기
-  * ### [Operator]
+  * ## [Operator]
     * 산술연산자(사칙연산자)
       1. 산술연산자의 종류
       2. 연산자의 활용
@@ -43,16 +43,16 @@
       2. 특이사항 
     * 삼항 연산자
       * 활용방법 
-  * ### [Programming Control Flow]
-  * ### [Conditions and loops]
-  * ### [Array]
-  * ### [JSON]
-  * ### [Function]
-  * ### [Prototype]
-  * ### [Class]
-  * ### [Module]
-  * ### [Built-in Javascript]
-  * ### [Asynchronous]
-  * ### [Exception handling syntax]
+  * ## [Programming Control Flow]
+  * ## [Conditions and loops]
+  * ## [Array]
+  * ## [JSON]
+  * ## [Function]
+  * ## [Prototype]
+  * ## [Class]
+  * ## [Module]
+  * ## [Built-in Javascript]
+  * ## [Asynchronous]
+  * ## [Exception handling syntax]
 
 
