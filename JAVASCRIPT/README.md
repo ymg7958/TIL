@@ -1,6 +1,6 @@
 # JAVASCRIPT
   ## 목차
-  * ### [Hello Javascript]
+  * ### [Hello Javascript](./HelloJavascript/README.md)
     * 웹 사이트 관련 직군 / 언어 분류
     * 실행환경 구성
     * Hello Javascript
