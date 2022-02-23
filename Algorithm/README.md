@@ -40,7 +40,7 @@ for (let i = 0; i < n.length; i++) {
 * 배열은 인덱스를 통해 접근하기 때문에 시간복잡도가 O(1)이지만, LinkedList는 Head 부터 탐색해야 하기 때문에 시간 복잡도가 O(n)이다.임의적인 접근에서는 오버헤드가 증가. 
 * Linked List는 순차적인 접근과 같은 병합정렬을 사용하는 것이 유용.
 
-![merge_ani](mergesort_ani.gif)
+![merge_ani](./images/mergesort_ani.gif)
 > 출처 visualgo.net/sorting
 -------
 [Example 01]
