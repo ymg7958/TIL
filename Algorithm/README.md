@@ -1,3 +1,95 @@
+## 알고리즘
+* 어떤 문제를 풀기 위한 절차나 방법
+* 주어진 `입력`을 `출력`으로 만드는 과정
+* 각 단계는 구체적이고 명료해야 한다.
+
+
+
+
+연속된 합을 구하는 알고리즘
+```javascript
+function sum_n(n) { return n * (n + 1) / 2 }
+console.log(sum_n(10)) // 55
+console.log(sum_n(100)) // 5050
+```
+
+
+동명이인 찾는 알고리즘
+```javascript
+const name = ["Tom","Jerry","Mike","Tom", "Yun"]
+let arr = []
+const findName = (a) => {
+    for (let i = 0; i < name.length -1; i++) {
+        for (let j = i + 1; j < name.length; j++) {
+            if (a[i] === a[j]) {
+                arr.push(a[i])
+            }
+        }
+    }
+    return arr
+}
+console.log(findName(name))
+```
+
+ > 비교할 이름과 순서상의 다음 이름만 비교하면 된다. 자기 자신과 비교할 필요 없다. i = 0; j = i + 1;
+ > 배열의 마지막 이름은 비교할 필요가 없다. 왜냐하면 자신의 뒤에 비교할 이름이 없고 비교가 끝났기 때문 i < name.length -1;
+
+### **같은 이름을 찾는 알고리즘 복잡도가 O(n^2) 인 이유?**
+
+비교해야 할 배열의 인덱스가 4인 경우에 
+ * 0번 위치의 이름: n-1 (자기를 제외한 모든 이름과 비교)
+ * 1번 위치의 이름: n-2번 비교
+ * 2번 위치의 이름: n-3번 비교
+ * n-2번 위치 이름: 1번 비교
+ * n-1번 위치 이름: 0번 비교
+
+결국, 전체 비교 횟수는 0 + 1 + 2 + 3 + 4 +... (n-1), 즉 1부터 n-1까지의 합
+1부터 n까지의 합을 구하는 공식은 `n(n+1) / 2` 여기에 n을 n-1을 대입하면 `(n-1)(n-1+1) / 2` =  1/2n^ - 1/2n
+n의 제곱에 비례해서 계산 시간이 변하는 것이 핵심이므로 n^2의 1/2계수는 무시하고 O(n^2)으로 표기
+
+---
+
+### Factorial
+```javascript
+const factrorial = (num) => {
+    if ( num < 1) {
+        return 1
+    }
+    return num * (factrorial(num - 1))
+}
+```
+> factorial(4) 
+>              -> 4 * factorial(3)
+>                                  ->  3 * factorial(2)
+>                                                       ->   2 * factorial(1)
+>                                                                               ->  1 (n은 1이므로 종료조건)
+>                                                       ->   2 * 1
+>                                  -> 3 * 2 * 1
+>              -> 4 * 3 * 2 * 1
+> 
+> 위 함수 호출을 4! 계산 수식으로 정리하면..
+>   4!
+>   = 4 * 3!
+>   = 4 * 3 * 2!
+>   = 4 * 3 * 2 * 1!
+>   = 4 * 3 * 2 * 1 (1은 종료조건이므로 재귀 호출을 멈춤)
+>   = 4 * 3 * 2
+>   = 4 * 6
+>   = 24
+
+1부터 n까지의 합 구하기를 재귀 호출로 만들기
+```javascript
+let num = 0;
+const fact = num => {
+    if (num === 0)
+        return 0
+
+    return fact(num - 1) + num
+}
+
+console.log(fact(10))
+```
+----
 ## 시간복잡도
   * 표기 : `Big-O` 
   * 입력 값 변화에 따라 연산할 때 `연산횟수에 비해 걸리는 시간`
