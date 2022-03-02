@@ -34,6 +34,44 @@ console.log(findName(name))
  > 비교할 이름과 순서상의 다음 이름만 비교하면 된다. 자기 자신과 비교할 필요 없다. i = 0; j = i + 1;
  > 배열의 마지막 이름은 비교할 필요가 없다. 왜냐하면 자신의 뒤에 비교할 이름이 없고 비교가 끝났기 때문 i < name.length -1;
 
+최대공약수 구하기
+```javascript
+function gcd(a,b) {
+    let i = Math.min(a,b)
+    while (true) {
+        if (a % i === 0 && b % i === 0) {
+            return i;
+        }
+        i = i -1;
+    }
+}
+```
+ > 최대공약수(Greatest Common Divisor, GCD) 두 개 이상의 정수의 공통 약수중에서 가장 큰 값
+> 2개의 값 중 작은 값을 기준으로 소인수분해,
+> a, b 값을 min 값으로 몫을 나누엇을 때 0이면 return
+> 아니면  while i를 1 빼주면서 실행
+
+ **또 다른 풀이 방법**
+ * Euclid 방식 : `b` `a`를 `b`로 나눈 나머지의 최대공약수와 같다. 즉 gcd(a,b) = gcd(b, a % b);
+ * 어떤 수와 0의 최대공약수는 자기 자신이다. 즉 gcd(n, 0) = n이다
+   * gcd(60,24) = gcd(24, 60 % 24) = gcd(24, 12) = gcd(12, 24 % 12) = gcd(12, 0) = 12;
+   * gcd(81, 27) = gcd(27, 81 % 27) = gcd(27, 0) = 27;
+
+재귀함수 표현 
+```javascript
+
+const gcd = (a,b) => {
+    if (b ===0) return a;
+
+    return gcd(b, a%b)
+}
+console.log(gcd(60,24))
+```
+---
+
+
+
+
 ### **같은 이름을 찾는 알고리즘 복잡도가 O(n^2) 인 이유?**
 
 비교해야 할 배열의 인덱스가 4인 경우에 
@@ -107,16 +145,35 @@ console.log(fact(10))
 ### 버블정렬 (bubble sort)
   * O(n^2) 알고리즘은 n번의 라운드를 이루어져 있으며, 라운드 마다 배열 원소를 한번씩 쭉 살펴보다.
   * 순서가 잘못된 경우 Swap 한다.
-  
+  * `length - 1`인 이유는 n - 1 원소 정렬이 끝나면 마지막 원소는 이미 끝에 놓이기 때문이다.
 ```javascript
-for (let i = 0; i < n.length; i++) {
+for (let i = 0; i < n.length -1; i++) {
   for (let j = 0; j < n.length -1; j++) {
     if (n[j] > n[j+1]) {
-      let tmp = n[j];
-          n[j] = n[j + 1];
-          n[j + 1] = tmp;
+      let tmp = n[j + 1];
+          n[j + 1] = n[j];
+          n[j] = tmp;
 ```
 
+ level 2. 버블정렬 개선 (bubble sort)
+```javascript
+const bubbleSort = (arr) => {
+    let swapped = true;
+    for (let i = 0; i < arr.length - 1; i++) {
+        swapped = false;
+        for (let j = 0; j < arr.length - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+    }
+    return arr;
+};
+const a = [5, 2, 6, 3, 1, 4, 9, 8, 7];
+console.log(bubbleSort(a));
+```
 #### 역위 (inversion)
   * 정렬 알고리즘 분석시 유용한 개념. 배열 인덱스 조합이 a < b 이지만 array[a] > array[b]인 경우 순서가 잘못되었을 때 이를 역위라 한다.
   * 즉 역위의 개수 = 필요한 작업량
@@ -196,3 +253,26 @@ let answer = mergeSort([5, 2, 4, 7, 6, 1, 3, 8]); // [1, 2, 3, 4, 5, 6, 7, 8]
 console.log(answer);
 
 ```
+
+### 이분탐색 (Binary search) 
+ 탐색할 자료를 둘로 나누어 찾는 방법, 순차탐색보다 자료를 빠르게 찾을 수 있다.
+ ```javascript
+ let d = [1,4,9,16,25,36,49,64,81]
+const binarySearch = (a, x) => {
+    let start = 0;
+    let end = a.length -1;
+
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2)
+        if (x === a[mid]) {
+            return mid
+        } else if (x > a[mid]) {
+            start = mid + 1
+        } else {
+            end = mid - 1
+        }
+    }
+}
+console.log(binarySearch(d, 64))
+ ```
+ > 이분 탐색을 가능하게 하려면 자료를 미리 정렬해야 한다.
